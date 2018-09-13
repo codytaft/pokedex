@@ -1,0 +1,15 @@
+.pokeCard {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 10rem;
+  border: 0.2rem solid rgb(247, 234, 0);
+  background: rgba(70, 63, 7915, 0.5);
+  border-radius: 1rem;
+  margin: 1rem;
+}
+
+.pokeType {
+  margin: 0.5rem 0 0 0;
+}
