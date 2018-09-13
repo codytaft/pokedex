@@ -21,7 +21,7 @@ class CardContainer extends Component {
   render() {
     return (
       <div>
-        {this.props.pokeTypes === [] ? (
+        {!this.props.pokeTypes ? (
           <button
             onClick={async () => {
               await this.fetchPokemonTypes();
@@ -30,7 +30,7 @@ class CardContainer extends Component {
             Get Pokemon
           </button>
         ) : (
-          <PokeCards />
+          <PokeCards pokeTypes={this.props.pokeTypes} />
         )}
       </div>
     );
@@ -42,10 +42,11 @@ CardContainer.propTypes = {
   addTypes: func.isRequired
 };
 
-const mapStateToProps = state => ({ pokeTypes: state.pokeTypes });
-const mapDispatchToProps = dispatch => ({
+export const mapStateToProps = state => ({ pokeTypes: state.pokeTypes });
+export const mapDispatchToProps = dispatch => ({
   addTypes: pokeTypes => dispatch(addTypes(pokeTypes))
 });
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
