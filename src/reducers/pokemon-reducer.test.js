@@ -19,5 +19,8 @@ describe('pokemonReducer', () => {
         sprites: []
       }
     ];
+    const expected = [pokemon];
+    const result = pokemonReducer(undefined, actions.addPokemon(pokemon));
+    expect(result).toEqual(expected);
   });
 });
