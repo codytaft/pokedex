@@ -1,34 +1,44 @@
 import React, { Component } from 'react';
-import PropTypes, { shape, func, string } from 'prop-types';
+import PropTypes, { shape, func, string, array } from 'prop-types';
 import { connect } from 'react-redux';
 import { addTypes } from '../../actions';
+import { PokeCards } from '../../components/PokeCards/PokeCards';
 
 class CardContainer extends Component {
-  async fetchPokemonTypes() {
-    const response = await fetch('http://localhost:3001/types');
-    const pokemonTypes = await response.json();
-    this.props.addTypes(pokemonTypes);
-    console.log(pokemonTypes);
+  // async fetchPokemonTypes() {
+  //   const response = await fetch('http://localhost:3001/types');
+  //   const pokemonTypes = await response.json();
+  //   this.props.addTypes(pokemonTypes);
+  //   console.log(pokemonTypes);
+  // }
+
+  fetchPokemonTypes() {
+    return fetch('http://localhost:3001/types')
+      .then(response => response.json())
+      .then(pokemonTypes => this.props.addTypes(pokemonTypes));
   }
+
   render() {
     return (
       <div>
-        <button
-          onClick={async () => {
-            // this.props.getTypes();
-            await this.fetchPokemonTypes();
-            // alert('POKE');
-          }}
-        >
-          Get Pokemon
-        </button>
+        {this.props.pokeTypes === [] ? (
+          <button
+            onClick={async () => {
+              await this.fetchPokemonTypes();
+            }}
+          >
+            Get Pokemon
+          </button>
+        ) : (
+          <PokeCards />
+        )}
       </div>
     );
   }
 }
 
 CardContainer.propTypes = {
-  fake: shape({ fake: string }),
+  pokeTypes: array.isRequired,
   addTypes: func.isRequired
 };
 
