@@ -34,7 +34,7 @@ CardContainer.propTypes = {
 
 const mapStateToProps = state => ({ pokeTypes: state.pokeTypes });
 const mapDispatchToProps = dispatch => ({
-  addTypes: types => dispatch(addTypes(types))
+  addTypes: pokeTypes => dispatch(addTypes(pokeTypes))
 });
 export default connect(
   mapStateToProps,

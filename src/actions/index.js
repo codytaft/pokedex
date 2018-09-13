@@ -1,4 +1,4 @@
-export const addTypes = types => ({
+export const addTypes = pokeTypes => ({
   type: 'ADD_TYPES',
-  types
+  pokeTypes
 });
