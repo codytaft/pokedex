@@ -13,7 +13,6 @@ export class PokeCards extends Component {
     };
   }
   async fetchPokemon(pokemonArray) {
-    !this.state.isClicked;
     const pokemonArr = await pokemonArray.map(async pokemonId => {
       if (!this.props.pokemon.find(pokemon => pokemon.id === pokemonId)) {
         const response = await fetch(
@@ -24,7 +23,6 @@ export class PokeCards extends Component {
       }
     });
     const promise = await Promise.all(pokemonArr);
-    console.log(promise);
     return promise.forEach(promise => {
       if (promise && !this.state.currentType.includes(promise.id)) {
         this.props.addPokemon(promise);

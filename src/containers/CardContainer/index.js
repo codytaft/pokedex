@@ -14,7 +14,7 @@ class CardContainer extends Component {
   render() {
     return (
       <div>
-        {!this.props.pokeTypes ? (
+        {!this.props.pokeTypes.length ? (
           <button
             onClick={async () => {
               await this.fetchPokemonTypes();
@@ -23,11 +23,7 @@ class CardContainer extends Component {
             Get Pokemon
           </button>
         ) : (
-          <PokeCards
-            pokeTypes={this.props.pokeTypes}
-            pokemon={this.props.pokemon}
-            fetchPokemon={this.fetchPokemon}
-          />
+          <PokeCards />
         )}
       </div>
     );
