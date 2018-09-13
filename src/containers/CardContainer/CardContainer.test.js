@@ -21,7 +21,7 @@ describe('mapStateToProps', () => {
 });
 
 describe('mapDispatchToProps', () => {
-  it('should invoke dispatch when using a fucntion from mapDispatchTo Props', () => {
+  it('should invoke dispatch when using a fucntion from mapDispatchToProps', () => {
     const mockDispatch = jest.fn();
     const id = 1;
     const name = 'normal';
