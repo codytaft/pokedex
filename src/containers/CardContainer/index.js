@@ -9,7 +9,6 @@ class CardContainer extends Component {
     const response = await fetch('http://localhost:3001/types');
     const pokemonTypes = await response.json();
     this.props.addTypes(pokemonTypes);
-    console.log(pokemonTypes);
   }
 
   // fetchPokemonTypes() {
