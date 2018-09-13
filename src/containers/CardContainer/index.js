@@ -5,18 +5,18 @@ import { addTypes } from '../../actions';
 import { PokeCards } from '../../components/PokeCards/PokeCards';
 
 class CardContainer extends Component {
-  // async fetchPokemonTypes() {
-  //   const response = await fetch('http://localhost:3001/types');
-  //   const pokemonTypes = await response.json();
-  //   this.props.addTypes(pokemonTypes);
-  //   console.log(pokemonTypes);
-  // }
-
-  fetchPokemonTypes() {
-    return fetch('http://localhost:3001/types')
-      .then(response => response.json())
-      .then(pokemonTypes => this.props.addTypes(pokemonTypes));
+  async fetchPokemonTypes() {
+    const response = await fetch('http://localhost:3001/types');
+    const pokemonTypes = await response.json();
+    this.props.addTypes(pokemonTypes);
+    console.log(pokemonTypes);
   }
+
+  // fetchPokemonTypes() {
+  //   return fetch('http://localhost:3001/types')
+  //     .then(response => response.json())
+  //     .then(pokemonTypes => this.props.addTypes(pokemonTypes));
+  //   }
 
   render() {
     return (

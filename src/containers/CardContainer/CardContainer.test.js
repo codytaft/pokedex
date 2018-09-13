@@ -23,6 +23,16 @@ describe('mapStateToProps', () => {
 describe('mapDispatchToProps', () => {
   it('should invoke dispatch when using a fucntion from mapDispatchTo Props', () => {
     const mockDispatch = jest.fn();
-    const actionToDispatch = addTypes();
+    const id = 1;
+    const name = 'normal';
+    const pokemon = [16, 17, 18, 19, 20];
+
+    const mockPokeTypes = [{ id, name, pokemon }];
+    const actionToDispatch = addTypes(mockPokeTypes);
+
+    const mappedProps = mapDispatchToProps(mockDispatch);
+    mappedProps.addTypes(mockPokeTypes);
+
+    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
   });
 });
