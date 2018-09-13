@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes, { shape, func, string, array } from 'prop-types';
 import { connect } from 'react-redux';
 import { addTypes } from '../../actions';
-import { PokeCards } from '../../components/PokeCards/PokeCards';
+import PokeCards from '../../components/PokeCards/PokeCards';
 
 class CardContainer extends Component {
   async fetchPokemonTypes() {
@@ -10,12 +10,6 @@ class CardContainer extends Component {
     const pokemonTypes = await response.json();
     this.props.addTypes(pokemonTypes);
   }
-
-  // fetchPokemonTypes() {
-  //   return fetch('http://localhost:3001/types')
-  //     .then(response => response.json())
-  //     .then(pokemonTypes => this.props.addTypes(pokemonTypes));
-  //   }
 
   render() {
     return (
@@ -29,7 +23,11 @@ class CardContainer extends Component {
             Get Pokemon
           </button>
         ) : (
-          <PokeCards pokeTypes={this.props.pokeTypes} />
+          <PokeCards
+            pokeTypes={this.props.pokeTypes}
+            pokemon={this.props.pokemon}
+            fetchPokemon={this.fetchPokemon}
+          />
         )}
       </div>
     );
@@ -37,7 +35,7 @@ class CardContainer extends Component {
 }
 
 CardContainer.propTypes = {
-  pokeTypes: array.isRequired,
+  pokeTypes: array,
   addTypes: func.isRequired
 };
 
